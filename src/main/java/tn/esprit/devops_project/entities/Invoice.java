@@ -29,6 +29,7 @@ public class Invoice implements Serializable {
 	Long idInvoice;
 	float amountDiscount;
 	float amountInvoice;
+
 	@Temporal(TemporalType.DATE)
 	Date dateCreationInvoice;
 	@Temporal(TemporalType.DATE)
@@ -40,5 +41,5 @@ public class Invoice implements Serializable {
     @JsonIgnore
     Supplier supplier;
 
-	
+
 }
