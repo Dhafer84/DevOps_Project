@@ -19,6 +19,9 @@ FROM openjdk:17-jdk-alpine
 # Définir le répertoire de travail
 WORKDIR /app
 
+# Installer Maven dans l'image de production
+RUN apk add --no-cache maven
+
 # Copier le JAR généré dans l'image
 COPY --from=build /app/target/DevOps_Project-1.0.jar /app/my-spring-app.jar
 
