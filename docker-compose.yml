@@ -16,7 +16,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   springboot:
-    image: ton-image-spring-boot
+    image: my-spring-app  # Remplacez par le nom de votre image
     container_name: spring-container
     depends_on:
       - mysql
