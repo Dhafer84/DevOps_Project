@@ -1,8 +1,5 @@
 # Utiliser une image Java officielle avec Maven
-FROM openjdk:17-jdk-alpine AS build
-
-# Installer Maven
-RUN apk add --no-cache maven=3.6.3-r0
+FROM maven:3.6.3-openjdk-17-slim AS build
 
 # Définir le répertoire de travail
 WORKDIR /app
@@ -21,7 +18,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copier le JAR généré dans l'image
-COPY --from=build /app/target/my-spring-app.jar /app/my-spring-app.jar
+COPY --from=build /app/target/DevOps_Project-1.0.jar /app/my-spring-app.jar
 
 # Exposer le port sur lequel Spring Boot écoute
 EXPOSE 8080
