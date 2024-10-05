@@ -5,7 +5,7 @@ FROM maven:3.6.3-openjdk-17-slim AS build
 WORKDIR /app
 
 # Copier le fichier pom.xml et le dossier source
-COPY pom.xml .
+COPY ../pom.xml .
 COPY src ./src
 
 RUN mvn clean install -Dmaven.repo.local=/root/.m2/repository
