@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   mysql:
     image: mysql:8.0
@@ -16,9 +17,9 @@ services:
       - mysql-data:/var/lib/mysql
 
   springboot:
-    build:  # Ajoutez cette ligne pour construire l'image à partir du Dockerfile
+    build:
       context: .  # Contexte de construction, indique le répertoire contenant le Dockerfile
-      dockerfile: dockerfile  # Nom du Dockerfile (facultatif si c'est le nom par défaut)
+      dockerfile: Dockerfile  # Nom du Dockerfile (veuillez vérifier la casse)
     container_name: spring-container
     depends_on:
       - mysql
@@ -33,6 +34,8 @@ services:
       - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQLDialect
       - SPRING_JPA_SHOW_SQL=true
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+    volumes:
+      - .:/app  # Montre le répertoire actuel dans /app du conteneur
 
 networks:
   my-network:
