@@ -8,6 +8,8 @@ WORKDIR /app
 COPY pom.xml .
 COPY src ./src
 
+RUN mvn clean install -Dmaven.repo.local=/root/.m2/repository
+
 # Construire le projet
 RUN mvn clean package
 
