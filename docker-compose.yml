@@ -16,7 +16,9 @@ services:
       - mysql-data:/var/lib/mysql
 
   springboot:
-    image: my-spring-app  # Remplacez par le nom de votre image
+    build:  # Ajoutez cette ligne pour construire l'image à partir du Dockerfile
+      context: .  # Contexte de construction, indique le répertoire contenant le Dockerfile
+      dockerfile: Dockerfile  # Nom du Dockerfile (facultatif si c'est le nom par défaut)
     container_name: spring-container
     depends_on:
       - mysql
@@ -37,4 +39,3 @@ networks:
 
 volumes:
   mysql-data:
-
