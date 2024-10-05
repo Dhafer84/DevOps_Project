@@ -26,7 +26,7 @@ RUN apk add --no-cache maven
 COPY --from=build /app/target/DevOps_Project-1.0.jar /app/my-spring-app.jar
 
 # Exposer le port sur lequel Spring Boot écoute
-EXPOSE 8080
+EXPOSE 8082
 
 # Commande pour exécuter l'application Spring Boot
 ENTRYPOINT ["java", "-jar", "/app/my-spring-app.jar"]
