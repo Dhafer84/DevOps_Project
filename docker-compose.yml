@@ -18,7 +18,7 @@ services:
   springboot:
     build:  # Ajoutez cette ligne pour construire l'image à partir du Dockerfile
       context: .  # Contexte de construction, indique le répertoire contenant le Dockerfile
-      dockerfile: Dockerfile  # Nom du Dockerfile (facultatif si c'est le nom par défaut)
+      dockerfile: dockerfile  # Nom du Dockerfile (facultatif si c'est le nom par défaut)
     container_name: spring-container
     depends_on:
       - mysql
