@@ -1,12 +1,7 @@
 # Étape 1 : Image de build avec Maven et JDK 17
 FROM maven:3.6.3-openjdk-17-slim AS build
 
-# Mettre à jour les paquets et installer les dépendances nécessaires
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    ca-certificates-java \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+
 
 # Définir le répertoire de travail
 WORKDIR /app
