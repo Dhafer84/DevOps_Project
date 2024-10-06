@@ -2,7 +2,7 @@
 FROM maven:3.6.3-openjdk-17-slim AS build
 
 # Installer Maven
-RUN apt-get update && apt-get install -y maven && apt-get clean
+#RUN apt-get update && apt-get install -y maven && apt-get clean
 
 # Définir le répertoire de travail
 WORKDIR /app
