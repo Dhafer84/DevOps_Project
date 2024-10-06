@@ -1,20 +1,22 @@
 # Étape 1 : Image de build avec Maven et JDK 17
 FROM maven:3.6.3-openjdk-17-slim AS build
 
-# Installer Maven
-RUN apt-get update && apt-get install -y maven && apt-get clean
+# Mettre à jour les paquets et installer les dépendances nécessaires
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates-java \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Définir le répertoire de travail
 WORKDIR /app
 
 # Copier le fichier pom.xml et télécharger les dépendances
 COPY pom.xml /app/
-#COPY pom.xml .
 RUN mvn dependency:go-offline
 
 # Copier le code source
 COPY src /app/src
-#COPY src ./src
 
 # Construire le projet (compile et package en un seul appel)
 RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository
