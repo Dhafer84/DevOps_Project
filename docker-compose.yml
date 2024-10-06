@@ -19,7 +19,7 @@ services:
   springboot:
     build:
       context: .  # Contexte de construction, indique le répertoire contenant le Dockerfile
-      dockerfile: Dockerfile  # Nom du Dockerfile (veuillez vérifier la casse)
+      dockerfile: dockerfile  # Nom du Dockerfile (veuillez vérifier la casse)
     container_name: spring-container
     depends_on:
       - mysql
