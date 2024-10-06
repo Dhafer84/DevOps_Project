@@ -1,33 +1,30 @@
-# Utiliser une image Java officielle avec Maven
+# Étape 1 : Image de build avec Maven et JDK 17
 FROM maven:3.6.3-openjdk-17-slim AS build
 
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Copier le fichier pom.xml et le dossier source
-COPY pom.xml /app/pom.xml
+# Copier le fichier pom.xml et télécharger les dépendances
+COPY pom.xml .
+RUN mvn dependency:go-offline
+
+# Copier le code source
 COPY src ./src
 
-RUN mvn clean install -Dmaven.repo.local=/root/.m2/repository
+# Construire le projet (compile et package en un seul appel)
+RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository
 
-# Construire le projet
-RUN mvn clean package
-
-# Étape de production
+# Étape 2 : Image de production avec uniquement JDK 17
 FROM openjdk:17-jdk-alpine
 
 # Définir le répertoire de travail
 WORKDIR /app
 
-# Installer Maven dans l'image de production
-RUN apk add --no-cache maven
-
-# Copier le JAR généré dans l'image
+# Copier le JAR généré dans l'image de production
 COPY --from=build /app/target/DevOps_Project-1.0.jar /app/my-spring-app.jar
 
-# Exposer le port sur lequel Spring Boot écoute
+# Exposer le port utilisé par Spring Boot
 EXPOSE 8082
 
 # Commande pour exécuter l'application Spring Boot
 ENTRYPOINT ["java", "-jar", "/app/my-spring-app.jar"]
-
