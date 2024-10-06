@@ -5,11 +5,13 @@ FROM maven:3.6.3-openjdk-17-slim AS build
 WORKDIR /app
 
 # Copier le fichier pom.xml et télécharger les dépendances
-COPY pom.xml .
+COPY pom.xml /app/
+#COPY pom.xml .
 RUN mvn dependency:go-offline
 
 # Copier le code source
-COPY src ./src
+COPY src /app/src
+#COPY src ./src
 
 # Construire le projet (compile et package en un seul appel)
 RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository
