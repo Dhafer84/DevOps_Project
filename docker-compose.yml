@@ -18,13 +18,13 @@ services:
 
   springboot:
     build:
-      context: .  # Contexte de construction, indique le répertoire contenant le Dockerfile
-      dockerfile: dockerfile  # Nom du Dockerfile (veuillez vérifier la casse)
+      context: .  # Contexte de construction
+      dockerfile: dockerfile  # Vérifie la casse de ce nom
     container_name: spring-container
     depends_on:
       - mysql
     ports:
-      - "8082:8082"  # Mapping pour le port 8082
+      - "8082:8082"
     networks:
       - my-network
     environment:
@@ -35,7 +35,14 @@ services:
       - SPRING_JPA_SHOW_SQL=true
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     volumes:
-      - .:/app  # Montre le répertoire actuel dans /app du conteneur
+      - .:/app
+
+  maven:
+    image: maven:3.8.5-openjdk-17-slim  # Utilise une image valide
+    container_name: maven-container
+    volumes:
+      - .:/app  # Monte le répertoire actuel dans /app du conteneur
+    working_dir: /app
 
 networks:
   my-network:
