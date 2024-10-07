@@ -10,7 +10,7 @@ services:
       - MYSQL_USER=phpmyadmin
       - MYSQL_PASSWORD=MySecureP@ssw0rd123!
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - my-network
     volumes:
