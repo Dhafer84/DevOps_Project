@@ -17,9 +17,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   springboot:
-    build:
-      context: .  # Contexte de construction
-      dockerfile: dockerfile  # Vérifie la casse de ce nom
+    image: uncledhafer/devopsproject:${VERSION}  # Utilise l'image Docker versionnée depuis Docker Hub
     container_name: spring-container
     depends_on:
       - mysql
@@ -35,10 +33,10 @@ services:
       - SPRING_JPA_SHOW_SQL=true
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     volumes:
-      - .:/app
+      - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
 
   maven:
-    image: maven:3.8.5-openjdk-17-slim  # Utilise une image valide
+    image: maven:3.8.5-openjdk-17-slim
     container_name: maven-container
     volumes:
       - .:/app  # Monte le répertoire actuel dans /app du conteneur
@@ -49,3 +47,4 @@ networks:
 
 volumes:
   mysql-data:
+
