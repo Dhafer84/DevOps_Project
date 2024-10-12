@@ -14,8 +14,6 @@
     <name>DevOps_Project</name>
     <description>DevOps_Project</description>
     <properties>
-        <docker.image.version>${project.version}-${docker.build.number}</docker.image.version> <!-- Propriété pour la version Docker -->
-        <docker.build.number>0</docker.build.number> <!-- Valeur par défaut -->
     </properties>
     <dependencies>
         <dependency>
@@ -84,8 +82,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
