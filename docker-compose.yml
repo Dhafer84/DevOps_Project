@@ -17,7 +17,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   springboot:
-    image: uncledhafer/devopsproject:${docker.image.version}  # Utilise l'image Docker versionnée depuis Docker Hub
+    image: uncledhafer/devopsproject:${VERSION}  # Utilise l'image Docker versionnée depuis Docker Hub
     container_name: spring-container
     depends_on:
       - mysql
