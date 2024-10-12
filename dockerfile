@@ -1,8 +1,6 @@
 # Étape 1 : Image de build avec Maven et JDK 17
 FROM maven:3.6.3-openjdk-17-slim AS build
 
-
-
 # Définir le répertoire de travail
 WORKDIR /app
 
@@ -23,13 +21,14 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Définir une variable d'environnement pour le nom du JAR
-ARG JAR_FILE=target/DevOps_Project-1.0.jar
+ARG JAR_FILE=target/*.jar
 
 # Copier le JAR généré dans l'image de production
-COPY --from=build /app/target/DevOps_Project-1.0.jar /app/my-spring-app.jar
+COPY --from=build ${JAR_FILE} /app/my-spring-app.jar
 
 # Exposer le port utilisé par Spring Boot
 EXPOSE 8082
 
 # Commande pour exécuter l'application Spring Boot
 ENTRYPOINT ["java", "-jar", "/app/my-spring-app.jar"]
+
