@@ -96,11 +96,15 @@
                 <executions>
                     <execution>
                         <goals>
-                            <goal>set-property</goal>
+                            <goal>set-system-properties</goal>
                         </goals>
                         <configuration>
-                            <name>docker.build.number</name>
-                            <value>${env.BUILD_NUMBER}</value> <!-- Définit la valeur de docker.build.number -->
+                            <properties>
+                                <property>
+                                    <name>docker.build.number</name>
+                                    <value>${env.BUILD_NUMBER}</value> <!-- Définit la valeur de docker.build.number -->
+                                </property>
+                            </properties>
                         </configuration>
                     </execution>
                 </executions>
