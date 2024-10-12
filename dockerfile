@@ -22,6 +22,9 @@ FROM openjdk:17-jdk-alpine
 # Définir le répertoire de travail
 WORKDIR /app
 
+# Définir une variable d'environnement pour le nom du JAR
+ARG JAR_FILE=target/DevOps_Project-1.0.jar
+
 # Copier le JAR généré dans l'image de production
 COPY --from=build /app/target/DevOps_Project-1.0.jar /app/my-spring-app.jar
 
