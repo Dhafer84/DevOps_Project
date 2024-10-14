@@ -1,6 +1,8 @@
 package tn.esprit.devops_project.controllers;
 
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.devops_project.entities.Invoice;
 import tn.esprit.devops_project.services.Iservices.IInvoiceService;
@@ -44,6 +46,28 @@ public class InvoiceController {
     public float getTotalAmountInvoiceBetweenDates(@PathVariable Date startDate,@PathVariable Date endDate){
         return invoiceService.getTotalAmountInvoiceBetweenDates(startDate, endDate);
     }
+
+    @PostMapping("/invoice")
+    public ResponseEntity<Invoice> createInvoice(@RequestBody Invoice invoice) {
+        if (invoice.getAmountInvoice() < 0) {
+            return ResponseEntity.badRequest().build(); // Retourne 400 Bad Request si le montant est négatif
+        }
+
+        // Ajoutez ici une logique pour vérifier les montants trop élevés
+        if (invoice.getAmountInvoice() > 10000) { // Remplacez 10000 par votre limite
+            return ResponseEntity.badRequest().build(); // Retourne 400 Bad Request si le montant est trop élevé
+        }
+
+        // Logique pour créer la facture
+        Invoice createdInvoice = invoiceService.createInvoice(invoice); // Appel au service pour créer la facture
+
+        // Retournez 201 Created avec l'objet créé
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdInvoice);
+    }
+
+
+
+
 
 
 }

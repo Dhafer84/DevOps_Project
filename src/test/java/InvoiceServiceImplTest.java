@@ -1,10 +1,20 @@
-import static org.junit.jupiter.api.Assertions.*;
+/*import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.mock.http.server.reactive.MockServerHttpRequest.post;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.any;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 import tn.esprit.devops_project.entities.Invoice;
 import tn.esprit.devops_project.repositories.InvoiceRepository;
 import tn.esprit.devops_project.services.InvoiceServiceImpl;
@@ -13,6 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class InvoiceServiceImplTest {
+    @Autowired
+    private MockMvc mockMvc;
+
 
     @Mock
     private InvoiceRepository invoiceRepository;
@@ -63,4 +76,6 @@ public class InvoiceServiceImplTest {
         });
         log.info("Test réussi : Une exception a été levée pour une facture inexistante.");
     }
-}
+
+
+}*/

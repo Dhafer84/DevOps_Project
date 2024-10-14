@@ -12,6 +12,7 @@ import tn.esprit.devops_project.repositories.OperatorRepository;
 import tn.esprit.devops_project.repositories.SupplierRepository;
 import tn.esprit.devops_project.services.Iservices.IInvoiceService;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -44,6 +45,15 @@ public class InvoiceServiceImpl implements IInvoiceService {
 
 		return invoiceRepository.findById(invoiceId).orElseThrow(() -> new NullPointerException("Invoice not found"));
 	}
+	private List<Invoice> invoices = new ArrayList<>();
+
+	@Override
+	public Invoice createInvoice(Invoice invoice) {
+		// Ajoutez votre logique ici pour enregistrer la facture
+		invoices.add(invoice); // Ajout simple à la liste
+		return invoice; // Retourner l'objet créé (ou une version persistante si vous utilisez une base de données)
+	}
+
 
 	@Override
 	public List<Invoice> getInvoicesBySupplier(Long idSupplier) {
