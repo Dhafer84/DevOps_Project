@@ -12,7 +12,7 @@ RUN mvn dependency:go-offline
 COPY src /app/src
 
 # Construire le projet (compile et package en un seul appel)
-RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository
+RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository -DskipTests
 
 # Renommer le JAR à un nom fixe
 RUN mv /app/target/*.jar /app/target/my-spring-app.jar

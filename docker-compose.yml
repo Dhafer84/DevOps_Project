@@ -35,12 +35,7 @@ services:
     volumes:
       - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
 
-  maven:
-    image: maven:3.8.5-openjdk-17-slim
-    container_name: maven-container
-    volumes:
-      - .:/app  # Monte le répertoire actuel dans /app du conteneur
-    working_dir: /app
+
     
   prometheus:
     image: prom/prometheus:latest
