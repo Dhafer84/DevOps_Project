@@ -16,6 +16,8 @@ RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository -DskipTests
 
 # Renommer le JAR à un nom fixe
 RUN mv /app/target/*.jar /app/target/my-spring-app.jar
+RUN ls -l /app/target/
+
 
 # Étape 2 : Image de production avec uniquement JDK 17
 FROM openjdk:17-jdk-alpine
