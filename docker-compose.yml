@@ -1,3 +1,4 @@
+---
 version: '3.8'
 
 services:
@@ -5,10 +6,10 @@ services:
     image: mysql:8.0
     container_name: mysql-container
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=devops
-      - MYSQL_USER=phpmyadmin
-      - MYSQL_PASSWORD=MySecureP@ssw0rd123!
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: devops
+      MYSQL_USER: phpmyadmin
+      MYSQL_PASSWORD: MySecureP@ssw0rd123!
     ports:
       - "3307:3306"
     networks:
@@ -26,14 +27,15 @@ services:
     networks:
       - my-network
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-container:3306/devops?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=phpmyadmin
-      - SPRING_DATASOURCE_PASSWORD=MySecureP@ssw0rd123!
-      - SPRING_JPA_DATABASE_PLATFORM=org.hibernate.dialect.MySQLDialect
-      - SPRING_JPA_SHOW_SQL=true
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/devops?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: phpmyadmin
+      SPRING_DATASOURCE_PASSWORD: MySecureP@ssw0rd123!
+      SPRING_JPA_DATABASE_PLATFORM: org.hibernate.dialect.MySQLDialect
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
     volumes:
-      - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)    
+      - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
+
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus-container
@@ -50,8 +52,8 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
     networks:
       - my-network
     depends_on:
