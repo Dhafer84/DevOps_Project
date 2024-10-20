@@ -17,7 +17,7 @@ services:
       - mysql-data:/var/lib/mysql
 
   springboot:
-    image: uncledhafer/devopsproject: 2.0  # Remplacez avec une version fixe
+    image: uncledhafer/devopsproject:latest  # Remplacez avec une version fixe
     container_name: spring-container
     depends_on:
       - mysql
