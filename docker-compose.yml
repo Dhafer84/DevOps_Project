@@ -33,10 +33,7 @@ services:
       - SPRING_JPA_SHOW_SQL=true
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
     volumes:
-      - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
-
-
-    
+      - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)    
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus-container
