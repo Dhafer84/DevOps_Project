@@ -14,6 +14,11 @@ COPY src /app/src
 # Construire le projet (compile et package en un seul appel)
 RUN mvn clean package -Dmaven.repo.local=/root/.m2/repository -DskipTests
 
+# Renommer le JAR à un nom fixe
+RUN mv /app/target/*.jar /app/target/my-spring-app.jar
+RUN ls -l /app/target/
+
+
 # Étape 2 : Image de production avec uniquement JDK 17
 FROM openjdk:17-jdk-alpine
 
@@ -21,11 +26,11 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copier le JAR généré dans l'image de production
-COPY --from=build /app/target/DevOps_Project-*.jar /app/DevOps_Project.jar
+COPY --from=build /app/target/my-spring-app.jar /app/my-spring-app.jar
 
 # Exposer le port utilisé par Spring Boot
 EXPOSE 8082
 
 # Commande pour exécuter l'application Spring Boot
-ENTRYPOINT ["java", "-jar", "/app/DevOps_Project.jar"]
+ENTRYPOINT ["java", "-jar", "/app/my-spring-app.jar"]
 
