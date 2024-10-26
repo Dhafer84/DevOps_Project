@@ -35,7 +35,7 @@ services:
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       spring.jpa.properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     volumes:
-      - .:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
+      - ./target:/app  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
 
   prometheus:
     image: prom/prometheus:latest
