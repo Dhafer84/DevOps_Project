@@ -26,7 +26,7 @@ FROM openjdk:17-jdk-alpine
 WORKDIR /app
 
 # Copier le JAR généré dans l'image de production
-COPY --from=build /app/target/my-spring-app.jar /app/my-spring-app.jar
+COPY --from=build /app/target/DevOps_Project-2.0 /app/DevOps_Project-2.0
 
 # Exposer le port utilisé par Spring Boot
 EXPOSE 8082
