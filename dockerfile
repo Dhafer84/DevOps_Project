@@ -32,5 +32,5 @@ COPY --from=build /app/target/my-spring-app.jar /app/my-spring-app.jar
 EXPOSE 8082
 
 # Commande pour exécuter l'application Spring Boot
-ENTRYPOINT ["java", "-jar", "/app/target/my-spring-app.jar"]
+ENTRYPOINT ["java", "-jar", "/app/target/DevOps_Project-2.0.jar"]
 
