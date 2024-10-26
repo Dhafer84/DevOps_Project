@@ -28,7 +28,7 @@ WORKDIR /app
 # Copier le JAR généré dans l'image de production
 # COPY --from=build /app/target/my-spring-app.jar /app/my-spring-app.jar
 ARG JAR_FILE
-COPY --from=build /app/target/${JAR_FILE} /app/app.jar  # Utilise JAR_FILE en tant que build arg
+COPY --from=build /app/target/${JAR_FILE} /app/app.jar
 
 
 
