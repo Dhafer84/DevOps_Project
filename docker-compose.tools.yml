@@ -48,4 +48,11 @@ services:
 
 networks:
   tools-network:
+  
+volumes:
+  sonarqube_conf:
+  sonarqube_data:
+  sonarqube_extensions:
+  sonarqube_logs:
+  sonarqube_temp:
 
