@@ -29,6 +29,7 @@ services:
     container_name: keen_spence
     ports:
       - "9000:9000"
+      - "9092:9092"
     networks:
       - tools-network
     volumes:
