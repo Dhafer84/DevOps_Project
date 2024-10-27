@@ -26,7 +26,7 @@ services:
 
   sonar:
     image: sonarqube:8.9.7-community
-    container_name: sonar-container
+    container_name: keen_spence
     ports:
       - "9000:9000"
     networks:
