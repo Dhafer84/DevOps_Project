@@ -37,4 +37,8 @@ services:
     volumes:
       - ./src:/app/src  # Montez le projet local si nécessaire (par exemple, pour la persistance ou les logs)
 
- 
+networks:
+  my-network:
+
+volumes:
+  mysql-data:
