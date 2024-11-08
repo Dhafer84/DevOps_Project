@@ -47,16 +47,22 @@ services:
     networks:
       - tools-network
     volumes:
-      - nexus_data: /nexus-data
+      - nexus_data:/nexus-data
 
 networks:
   tools-network:
-  
+
 volumes:
   sonarqube_conf:
+    driver: local
   sonarqube_data:
+    driver: local
   sonarqube_extensions:
+    driver: local
   sonarqube_logs:
+    driver: local
   sonarqube_temp:
-  nexus_data: {}
+    driver: local
+  nexus_data:
+    driver: local
 
