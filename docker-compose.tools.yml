@@ -46,6 +46,8 @@ services:
       - "8081:8081"
     networks:
       - tools-network
+    volumes:
+      - nexus_data:/nexus-data  # Ajout d'un volume pour les données Nexus
 
 networks:
   tools-network:
@@ -56,4 +58,5 @@ volumes:
   sonarqube_extensions:
   sonarqube_logs:
   sonarqube_temp:
+  nexus_data:  # Définir le volume pour Nexus
 
