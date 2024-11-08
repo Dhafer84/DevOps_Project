@@ -41,7 +41,6 @@ services:
 
   nexus:
     image: sonatype/nexus3
-    container_name: nexus-container
     ports:
       - "8081:8081"
     networks:
