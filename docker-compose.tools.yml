@@ -1,6 +1,29 @@
 version: '3.8'
 
 services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus-container
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - tools-network
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana-container
+    ports:
+      - "3000:3000"
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: admin
+    networks:
+      - tools-network
+    depends_on:
+      - prometheus
+
   sonar:
     image: sonarqube:8.9.7-community
     container_name: keen_spence
