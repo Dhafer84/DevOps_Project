@@ -6,3 +6,8 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     static_configs:
       - targets: ['spring-container:8082']
+  - job_name: jenkins
+    metrics_path: /prometheus
+    static_configs:
+      - targets: ['192.168.33.10:8080']
+
